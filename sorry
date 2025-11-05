@@ -1,32 +1,41 @@
 import numpy as np
 rng = np.random.default_rng(123)
+
 # x = rng.normal(size=(6, 6))
 x = rng.integers(-10, 10, size=(6, 6)) 
 print(f'{x=}')
 print()
+
 f3 = rng.integers(-3, 3, size=(3, 3)) 
 print(f'{f3=}')
 print()
+
 f5 = rng.integers(-3, 3, size=(5, 5)) 
 print(f'{f5=}')
 print()
-##### filter_size = f3.shape[0]  
+
+# just uncommented this ↓
+filter_size = f3.shape[0]  
 x[0:3, 0:3]
+
 # more generally x[i:i+filter_size, j:j+filter_size]
 i = 0 
 j = 0
 x[i:i+filter_size, j:j+filter_size]
-####  stride = 1
-for i in range(0, 5, stride):
+
+# uncommented stride and adjusted range so only full 3×3 patches show
+stride = 1
+for i in range(0, x.shape[0] - filter_size + 1, stride):
     print(i, i + filter_size, "\n", x[i:i+filter_size, 0:0+filter_size], "\n")
-#####    a = np.array([[1, 2, 3], [4, 5, 6]])
+
+# uncommented a and kept rest same
+a = np.array([[1, 2, 3], [4, 5, 6]])
 b = np.array([[7, 8, 9], [10, 11, 12]])
-a*b
-####   np.sum(a*b)
-bias = 5
-np.sum(a*b) + bias
-#### x_pad1 = np.pad(x, 1)
-x_pad1
-####  x_pad2 = np.pad(x, 2)
-x_pad2
-####  _pad1[0:3, 0:3]
+print("a*b =\n", a*b)
+print("sum + bias =", np.sum(a*b) + 5)
+
+# uncommented pads and fixed typo
+x_pad1 = np.pad(x, 1)
+x_pad2 = np.pad(x, 2)
+print("x_pad1 shape:", x_pad1.shape)
+print("Top-left 3×3 from x_pad1:\n", x_pad1[0:3, 0:3])
