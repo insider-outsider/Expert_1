@@ -10,6 +10,6 @@ model = nn.Sequential(
     nn.Conv2d(24, 24, kernel_size=1),
     nn.ReLU(),
     nn.Flatten(),
-    nn.Linear(24 * 3 * 3, 32),
+    nn.Linear(24 * 12 * 12, 32),
     nn.Linear(32, 5)
 )
